@@ -1,5 +1,5 @@
-
 <?php
+	require_once __DIR__ . '/config.php';
 
 	$inData = getRequestInfo();
 	
@@ -7,12 +7,17 @@
 	$firstName = "";
 	$lastName = "";
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
-	if( $conn->connect_error )
+	try
 	{
-		returnWithError( $conn->connect_error );
+		$conn = getDbConnection();
 	}
-	else
+	catch (Throwable $e)
+	{
+		returnWithError("Database connection failed");
+		return;
+	}
+
+	if( $conn )
 	{
 		$stmt = $conn->prepare("SELECT ID,firstName,lastName FROM Users WHERE Login=? AND Password =?");
 		$stmt->bind_param("ss", $inData["login"], $inData["password"]);

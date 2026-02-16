@@ -1,16 +1,22 @@
 <?php
+	require_once __DIR__ . '/config.php';
 
 	$inData = getRequestInfo();
 	
 	$searchResults = "";
 	$searchCount = 0;
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
-	if ($conn->connect_error) 
+	try
 	{
-		returnWithError( $conn->connect_error );
+		$conn = getDbConnection();
+	}
+	catch (Throwable $e)
+	{
+		returnWithError("Database connection failed");
+		return;
 	} 
-	else
+
+	if ($conn)
 	{
 		$stmt = $conn->prepare("select Name from Colors where Name like ? and UserID=?");
 		$colorName = "%" . $inData["search"] . "%";

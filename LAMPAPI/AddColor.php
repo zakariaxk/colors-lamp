@@ -1,15 +1,22 @@
 <?php
+	require_once __DIR__ . '/config.php';
+
 	$inData = getRequestInfo();
 	
 	$color = $inData["color"];
 	$userId = $inData["userId"];
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
-	if ($conn->connect_error) 
+	try
 	{
-		returnWithError( $conn->connect_error );
-	} 
-	else
+		$conn = getDbConnection();
+	}
+	catch (Throwable $e)
+	{
+		returnWithError("Database connection failed");
+		return;
+	}
+
+	if ($conn)
 	{
 		$stmt = $conn->prepare("INSERT into Colors (UserId,Name) VALUES(?,?)");
 		$stmt->bind_param("ss", $userId, $color);
