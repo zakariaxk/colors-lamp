@@ -14,6 +14,8 @@ This project demonstrates deployment of a web server, database connectivity, and
 - Postman / CURL for endpoint testing
 
 ## Project Structure
+
+```
 colors-lamp/
 ├── color.html
 ├── css/
@@ -28,9 +30,10 @@ colors-lamp/
 │   ├── AddColor.php
 │   ├── Login.php
 │   └── SearchColors.php
-├── LICENSE
+├── LICENSE.md
 ├── README.md
 └── .gitignore
+```
 
 ## High-Level Setup Instructions
 1. Create a Linux server running a LAMP stack (for example, an Ubuntu droplet on DigitalOcean).
