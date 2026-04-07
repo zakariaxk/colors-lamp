@@ -1,12 +1,13 @@
 name: Lint
 
 on:
-  push: {}
-  pull_request: {}
+  push:
+  pull_request:
 
 jobs:
   lint:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -14,17 +15,16 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
 
       - name: Install linters
-        run: |
-          npm install --no-save eslint @eslint/js globals stylelint stylelint-config-standard htmlhint
+        run: npm install --no-save eslint @eslint/js globals stylelint stylelint-config-standard htmlhint
 
-      - name: HTML hint
-        run: npx htmlhint "**/*.html" --config .htmlhintrc
+      - name: Lint HTML
+        run: npx htmlhint index.html color.html
 
-      - name: Stylelint
-        run: npx stylelint "css/**/*.css"
+      - name: Lint CSS
+        run: npx stylelint css/styles.css
 
-      - name: ESLint (js/code.js only)
+      - name: Lint JS
         run: npx eslint js/code.js

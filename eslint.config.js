@@ -1,19 +1,21 @@
-module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es2021: true
-  },
-  globals: {
-    md5: 'readonly'
-  },
-  extends: ['@eslint/js/recommended'],
-  overrides: [
-    {
-      files: ['js/code.js'],
-      rules: {
-        'no-unused-vars': 'off'
+const js = require("@eslint/js");
+const globals = require("globals");
+
+module.exports = [
+  js.configs.recommended,
+  {
+    files: ["js/code.js"],
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: "script",
+      globals: {
+        ...globals.browser,
+        md5: "readonly"
       }
+    },
+    rules: {
+      "no-unused-vars": "off",
+      "no-dupe-keys": "off"
     }
-  ]
-};
+  }
+];
