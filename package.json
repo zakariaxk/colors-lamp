@@ -1,0 +1,32 @@
+{
+  "name": "colors-lamp",
+  "version": "1.0.0",
+  "description": "COLORS is a full-stack web application built using the LAMP stack (Linux, Apache, MySQL, PHP).   The application allows users to log in and manage a personal collection of colors through a web interface that communicates with backend API endpoints.   This project demonstrates deployment of a web server, database connectivity, and client-server communication in a simple full-stack environment.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakariaxk/colors-lamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/zakariaxk/colors-lamp/issues"
+  },
+  "homepage": "https://github.com/zakariaxk/colors-lamp#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.0",
+    "globals": "^17.4.0",
+    "htmlhint": "^1.9.2",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}
