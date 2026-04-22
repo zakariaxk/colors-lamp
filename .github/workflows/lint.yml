@@ -1,11 +1,11 @@
-name: Lint
+name: Lint and Test
 
 on:
   push:
   pull_request:
 
 jobs:
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,8 +17,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install linters
-        run: npm install --no-save eslint @eslint/js globals stylelint stylelint-config-standard htmlhint
+      - name: Install dependencies
+        run: npm install
 
       - name: Lint HTML
         run: npx htmlhint index.html color.html
@@ -27,4 +27,7 @@ jobs:
         run: npx stylelint css/styles.css
 
       - name: Lint JS
-        run: npx eslint js/code.js
+        run: npx eslint js/code.js js/colorUtils.js
+
+      - name: Run tests
+        run: npm test
